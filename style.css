@@ -92,7 +92,7 @@ select {
 
 body {
   background-color: var(--clr-neutral-600);
-  font-size: max(1rem, 1vw);
+  font-size: clamp(0.8rem, 1.75vw, 1rem);
   color: var(--clr-neutral-600);
   font-family: var(--ff-primary);
   display: flex;
@@ -101,7 +101,7 @@ body {
   min-height: 100vh;
 }
 .container {
-  max-width: min(800px, calc(70% + 100px));
+  width: min(800px, calc(70% + 100px));
   padding: 1rem;
   background-color: var(--clr-neutral-100);
   border-radius: 20px;
@@ -112,6 +112,8 @@ body {
   border-radius: 1rem;
 }
 .hero-img img {
+  object-fit: cover;
+  overflow: hidden;
   width: 100%;
   border-radius: 1rem;
 }
@@ -177,12 +179,12 @@ button:hover {
 .container-2 h1 {
   font-size: clamp(30px, 5vw, 50px);
   color: var(--clr-neutral-900);
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .container-2 p {
   margin-top: 10px;
-  width: 33ch;
+  width: 35ch;
 }
 
 .hide {
@@ -208,9 +210,15 @@ button:hover {
   color: var(--clr-neutral-600);
   font-size: clamp(40px, 5vw, 55px);
 }
+#email-address {
+  font-weight: var(--fw-bold);
+}
 
-@media (max-width: 860px) {
+@media (max-width: 800px) {
   body {
+    border-radius: 20px;
+    background-color: transparent;
+    display: block;
     margin: 0;
     padding: 0;
   }
@@ -219,34 +227,49 @@ button:hover {
     padding: 0;
     margin: 0;
     flex-direction: column-reverse;
-    justify-content: center;
   }
   .content {
     width: 100%;
-    padding: 20px;
   }
   .content h1 {
     margin-bottom: 1rem;
+    font-size: clamp(40px, 5vh, 55px);
   }
   .container .hero-img {
     padding: 0;
     margin: 0;
   }
   .container .content {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
+    padding: 1rem 2rem;
   }
   .hero-img {
     width: 100%;
   }
   .hero-img img {
-    object-fit: cover;
+    object-fit: cover; /* This property makes the image cover the entire area */
+    width: 100%;
+    border-radius: 0;
     content: url("assets/images/illustration-sign-up-mobile.svg");
-    overflow: hidden;
   }
   form {
     width: 100%;
     margin-inline: auto;
+  }
+
+  .container-2 {
+    padding: 0 2rem;
+    margin-top: 3rem;
+  }
+  .container-2 img {
+    margin-top: 40px;
+  }
+  .container-2 h1 {
+    padding-bottom: 1rem;
+    font-size: clamp(40px, 5vh, 55px);
+  }
+  .container-2 button {
+    width: 100%;
+    margin-top: 50%;
+    align-items: center;
   }
 }
